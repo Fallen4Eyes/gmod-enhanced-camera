@@ -2,8 +2,6 @@ AddCSLuaFile("../client/enhanced_camera.lua")
 
 local cvarHeightEnabled = CreateConVar("sv_ec_dynamicheight", "1",
                               {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_REPLICATED})
-local cvarTrueCrouch =
-    CreateConVar("sv_ec_truecrouch", "1", {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_REPLICATED})
 local cvarHeightMin = CreateConVar("sv_ec_dynamicheight_min", "16", {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE})
 local cvarHeightMax = CreateConVar("sv_ec_dynamicheight_max", "64", {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE})
 
@@ -21,7 +19,7 @@ local function UpdateView(ply)
         entity:ResetSequence(entity:LookupSequence("idle_all_01"))
         local bone = entity:LookupBone("ValveBiped.Bip01_Neck1")
         if bone then
-            height_max = entity:GetBonePosition(bone).z + 5
+            height_max = ents:GetBonePosition(bone).z + 5
         end
 
         -- Finds model's crouch height
