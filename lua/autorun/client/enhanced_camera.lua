@@ -225,7 +225,7 @@ function EnhancedCamera:GetRenderPosAngle()
   offset:Rotate(renderAngle)
   -- Adjust offset for crouching
   if LocalPlayer():GetGroundEntity() ~= NULL and LocalPlayer():Crouching() then
-    offset.z = offset.z + 21
+    offset.z = offset.z + 5.0
   end
   renderPos = renderPos + offset
   return renderPos, renderAngle
@@ -330,7 +330,6 @@ function EnhancedCamera:OnPoseChange()
     self.entity:ManipulateBoneScale(bone, vector_origin)
     self.entity:ManipulateBonePosition(bone, Vector(0, 0, -128))
   end
-
   -- Set pose-specific view offset
   if self.pose == "normal" or self.pose == "camera" or self.pose == "fist" or
       self.pose == "dual" or self.pose == "passive" or self.pose == "magic" then
